@@ -75,7 +75,7 @@ class MainController extends Controller
 
             // shuffle the wrong answer
             shuffle($other_capitals);
-            $question['wrong_answer'] = array_slice($other_capitals, 0, 3);
+            $question['wrong_answers'] = array_slice($other_capitals, 0, 3);
 
             // store anwer result
             $question['correct'] = null;
@@ -92,16 +92,16 @@ class MainController extends Controller
         $current_question = session('current_question') - 1;
 
         // prepare answers to show in view
-        $asnwers = $quiz['$current_question'];
-        $asnwers[] = $quiz['$correct_answers'];
+        $answers = $quiz[$current_question]['wrong_answers'];
+        $answers[] = $quiz[$current_question]['correct_answer'];
 
-        shuffle($asnwers);
+        shuffle($answers);
 
         return view('game')->with([
-            'country' => $quiz['$current_question']['country'],
+            'country' => $quiz[$current_question]['country'],
             'totalQuestions' => $total_questions,
-            'current_question' => $current_question,
-            'answers' => $asnwers,
+            'currentQuestion' => $current_question,
+            'answers' => $answers,
         ]);
     }
 }
