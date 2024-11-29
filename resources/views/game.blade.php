@@ -7,7 +7,7 @@
 
         <div class="row">
 
-           @foreach($asnwers as $asnwer)
+           @foreach($answers as $asnwer)
                <x-answer :capital="$asnwer" />
            @endforeach
 

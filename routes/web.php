@@ -8,3 +8,4 @@ Route::post('/', [\App\Http\Controllers\MainController::class, 'prepareGame'])->
 
 //In game
 Route::get('/game', [\App\Http\Controllers\MainController::class, 'game'])->name('game');
+Route::get('/answer/{answer}', [\App\Http\Controllers\MainController::class, 'answer'])->name('answer');
